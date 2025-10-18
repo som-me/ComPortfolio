@@ -1,0 +1,80 @@
+"use client";
+import { useState } from "react";
+import { FiMenu, FiX } from "react-icons/fi";
+import { navbarLinks, navbarTitle, LandingPageDash } from "../content.js"
+
+export default function Navbar() {
+
+    const [menuOpen, setMenuOpen] = useState(false);
+    const [activeLink, setActiveLink] = useState("");
+
+    const handleClick = (id) => {
+        setActiveLink(id);
+        setMenuOpen(false);
+    };
+
+    return (
+        <nav
+            className="relative w-full flex justify-between items-center px-6 md:px-24 lg:px-48 pt-5 font-[var(--font-roboto)] z-50"
+        >
+            {/* Nav Logo */}
+            <div className="flex items-center space-x-3">
+                <img
+                    src="/logo.svg"
+                    alt="logo"
+                    className="h-8 w-auto rounded object-contain"
+                />
+                <span className="flex items-center space-x-2">
+                    {LandingPageDash}
+                    <span className="text-gray-600 text-md">{navbarTitle}</span>
+                </span>
+            </div>
+
+            {/* Desktop Links */}
+            <div className="hidden md:flex space-x-8">
+                {navbarLinks.map((link) => (
+                    <a
+                        key={link.id}
+                        href={`#${link.id}`}
+                        className="text-black text-md hover:text-gray-600 transition-colors"
+                    >
+                        {link.label}
+                    </a>
+                ))}
+            </div>
+
+            {/* Mobile Menu Icon */}
+            <div className="md:hidden z-50">
+                {menuOpen ? (
+                    <FiX
+                        size={28}
+                        className="text-black cursor-pointer transition-transform duration-200"
+                        onClick={() => setMenuOpen(false)}
+                    />
+                ) : (
+                    <FiMenu
+                        size={28}
+                        className="text-black cursor-pointer transition-transform duration-200"
+                        onClick={() => setMenuOpen(true)}
+                    />
+                )}
+            </div>
+
+            {/* Mobile Dropdown Menu */}
+            {menuOpen && (
+                <div className="absolute top-[70px] h-[90vh] left-0 w-full bg-black flex flex-col items-start space-y-4 py-6 pl-6 md:hidden animate-fadeIn">
+                    {navbarLinks.map((link) => (
+                        <a
+                            key={link.id}
+                            href={`#${link.id}`}
+                            className={`text-2xl ${activeLink === link.id ? "text-gray-400" : "text-white"} transition-colors`}
+                            onClick={() => handleClick(link.id)}
+                        >
+                            {link.label}
+                        </a>
+                    ))}
+                </div>
+            )}
+        </nav>
+    );
+}
