@@ -1,10 +1,9 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
-import { navbarLinks, navbarTitle, LandingPageDash } from "../content.js"
+import { navbarLinks, navbarTitle, LandingPageDash } from "../content.js";
 
 export default function Navbar() {
-
     const [menuOpen, setMenuOpen] = useState(false);
     const [activeLink, setActiveLink] = useState("");
 
@@ -13,10 +12,20 @@ export default function Navbar() {
         setMenuOpen(false);
     };
 
+    // 🧠 Prevent background scroll when menu is open
+    useEffect(() => {
+        if (menuOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "auto";
+        }
+        return () => {
+            document.body.style.overflow = "auto";
+        };
+    }, [menuOpen]);
+
     return (
-        <nav
-            className="relative w-full flex justify-between items-center px-6 md:px-24 lg:px-48 pt-5 font-[var(--font-roboto)] z-50"
-        >
+        <nav className="relative w-full flex justify-between items-center px-6 md:px-24 lg:px-48 pt-5 font-[var(--font-roboto)] z-50">
             {/* Nav Logo */}
             <div className="flex items-center space-x-3">
                 <img
@@ -62,7 +71,9 @@ export default function Navbar() {
 
             {/* Mobile Dropdown Menu */}
             {menuOpen && (
-                <div className="absolute top-[70px] h-[90vh] left-0 w-full bg-black flex flex-col items-start space-y-4 py-6 pl-6 md:hidden animate-fadeIn">
+                <div
+                    className="fixed inset-0 top-[70px] bg-black/95 backdrop-blur-sm flex flex-col items-start space-y-6 py-8 pl-8 w-full h-[calc(100vh-70px)] md:hidden z-40 animate-fadeSlideDown"
+                >
                     {navbarLinks.map((link) => (
                         <a
                             key={link.id}

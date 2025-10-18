@@ -12,7 +12,7 @@ export default function Hero() {
             {/* CTA section */}
             <div className="pt-12 flex flex-col md:flex-row lg-flex-row items-start md:items-center gap-8">
                 <button
-                    className="bg-white hover:shadow-xl border border-black/20 text-black py-4 px-6 rounded-full transition-all duration-300"
+                    className="bg-white hover:shadow-xl border border-black/20 text-black py-4 md:py-5 px-6 md:px-8 rounded-full transition-all duration-300"
                 >
                     {heroCTA}
                 </button>

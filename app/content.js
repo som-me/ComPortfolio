@@ -30,5 +30,12 @@ export const heroCTAtext = (
 //
 export const bannerText = "Weaving emotion into pixels through design and animation.";
 export const bannerSubText = "I build brands that outshine your expectations.";
-
-
+//
+// Banner Video
+//
+export const heroVideo = {
+    mp4: "./BannerVideo.mp4",
+};
+export const heroVideoDesk = {
+    mp4: "./BannerVideoDesk.mp4",
+};
