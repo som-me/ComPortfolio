@@ -31,7 +31,7 @@ export default function Banner() {
     }, []);
 
     return (
-        <div className="bg-black">
+        <section className="bg-[#101010]">
             <div className="text-white pt-16 md:pt-32 mt-16 md:mt-24 flex flex-col px-6 md:px-108 items-center">
                 <span className="text-3xl leading-10 md:leading-15 tracking-wide md:tracking-wider md:text-4xl lg:text-5xl text-center">
                     {bannerText}
@@ -48,7 +48,7 @@ export default function Banner() {
                     loop
                     muted
                     playsInline
-                    className="shadow-lg max-w-full block md:hidden"
+                    className="shadow-lg max-w-full block md:hidden pb-20"
                 >
                     <source src={heroVideo.mp4} type="video/mp4" />
                     Your browser does not support the video tag.
@@ -60,12 +60,12 @@ export default function Banner() {
                     loop
                     muted
                     playsInline
-                    className="shadow-lg max-w-full hidden md:block"
+                    className="shadow-lg max-w-full hidden md:block pb-12"
                 >
                     <source src={heroVideoDesk.mp4} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
             </div>
-        </div>
+        </section>
     );
 }

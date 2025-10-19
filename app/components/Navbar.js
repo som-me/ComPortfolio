@@ -12,7 +12,6 @@ export default function Navbar() {
         setMenuOpen(false);
     };
 
-    // 🧠 Prevent background scroll when menu is open
     useEffect(() => {
         if (menuOpen) {
             document.body.style.overflow = "hidden";
@@ -57,13 +56,13 @@ export default function Navbar() {
                 {menuOpen ? (
                     <FiX
                         size={28}
-                        className="text-black cursor-pointer transition-transform duration-200"
+                        className="text-black cursor-pointer transition-transform duration-100"
                         onClick={() => setMenuOpen(false)}
                     />
                 ) : (
                     <FiMenu
                         size={28}
-                        className="text-black cursor-pointer transition-transform duration-200"
+                        className="text-black cursor-pointer transition-transform duration-100"
                         onClick={() => setMenuOpen(true)}
                     />
                 )}
