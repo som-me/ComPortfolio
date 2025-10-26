@@ -5,8 +5,11 @@ import { WrTitle, WrHead, WrBody, WrHead2, WrBody2 } from "../content";
 export default function Works() {
     const router = useRouter();
 
-    const handleClick = () => {
-        router.push("#DesignHouse");
+    const handleClickA = () => {
+        router.push("/DesignHouse");
+    };
+    const handleClickB = () => {
+        router.push("/UniqueStyles");
     };
 
     return (
@@ -19,7 +22,7 @@ export default function Works() {
             {/* First Block */}
             <div className="flex flex-col gap-6 px-4 mt-12 md:pb-12">
                 <div
-                    onClick={handleClick}
+                    onClick={handleClickA}
                     className="relative max-h-[36vh] md:max-h-[100vh] flex items-center justify-center bg-[#0c0c0c] rounded-2xl border border-[#222] shadow-lg overflow-hidden group cursor-pointer transition-transform"
                 >
                     <img
@@ -39,7 +42,7 @@ export default function Works() {
             {/* Second Block */}
             <div className="flex flex-col gap-6 px-4 mt-12 pb-12">
                 <div
-                    onClick={handleClick}
+                    onClick={handleClickB}
                     className="relative max-h-[36vh] md:max-h-[100vh] flex items-center justify-center bg-[#0c0c0c] rounded-2xl border border-[#222] shadow-lg overflow-hidden group cursor-pointer transition-transform"
                 >
                     <img

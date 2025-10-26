@@ -1,15 +1,22 @@
 "use client";
+
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { FiMenu, FiX } from "react-icons/fi";
 import { navbarLinks, navbarTitle, LandingPageDash } from "../content.js";
 
 export default function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [activeLink, setActiveLink] = useState("");
+    const router = useRouter();
 
     const handleClick = (id) => {
         setActiveLink(id);
         setMenuOpen(false);
+
+        // Route to the corresponding page
+        if (id === "home") router.push("/");
+        else router.push(`/${id}`);
     };
 
     useEffect(() => {
@@ -24,9 +31,9 @@ export default function Navbar() {
     }, [menuOpen]);
 
     return (
-        <nav className="relative w-full flex justify-between items-center px-6 md:px-24 lg:px-48 pt-5 font-[var(--font-roboto)] z-50">
+        <nav className="relative w-full flex justify-between items-center px-6 md:px-12 pt-5 font-[var(--font-roboto)] z-50">
             {/* Nav Logo */}
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-3 cursor-pointer" onClick={() => router.push("/")}>
                 <img
                     src="/logo.svg"
                     alt="logo"
@@ -41,13 +48,13 @@ export default function Navbar() {
             {/* Desktop Links */}
             <div className="hidden md:flex space-x-8">
                 {navbarLinks.map((link) => (
-                    <a
+                    <button
                         key={link.id}
-                        href={`#${link.id}`}
+                        onClick={() => handleClick(link.id)}
                         className="text-black text-md hover:text-gray-600 transition-colors"
                     >
                         {link.label}
-                    </a>
+                    </button>
                 ))}
             </div>
 
@@ -74,14 +81,13 @@ export default function Navbar() {
                     className="fixed inset-0 top-[70px] bg-black/95 backdrop-blur-sm flex flex-col items-start space-y-6 py-8 pl-8 w-full h-[calc(100vh-70px)] md:hidden z-40 animate-fadeSlideDown"
                 >
                     {navbarLinks.map((link) => (
-                        <a
+                        <button
                             key={link.id}
-                            href={`#${link.id}`}
-                            className={`text-2xl ${activeLink === link.id ? "text-gray-400" : "text-white"} transition-colors`}
                             onClick={() => handleClick(link.id)}
+                            className={`text-2xl ${activeLink === link.id ? "text-gray-400" : "text-white"} transition-colors`}
                         >
                             {link.label}
-                        </a>
+                        </button>
                     ))}
                 </div>
             )}

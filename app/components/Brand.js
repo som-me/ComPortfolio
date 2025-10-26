@@ -33,7 +33,7 @@ export default function Brand() {
 
                 {/* LinkedIn */}
                 <a
-                    href="https://www.linkedin.com/in/som-meher"
+                    href="https://www.linkedin.com/in/som-meher "
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-white/40 hover:text-white transition-colors duration-300 text-2xl"
