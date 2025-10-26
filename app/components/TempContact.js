@@ -132,7 +132,7 @@ export default function TempContact() {
             <footer className="mt-24 border-t border-gray-700 pt-10 flex flex-col md:flex-row justify-between items-center text-sm text-gray-300 gap-6">
                 <div className="flex items-center gap-3">
                     <div className="text-2xl font-bold">CB</div>
-                    <span>{footer.name}</span>
+                    <span>{footer.Name}</span>
                 </div>
 
                 <div className="flex flex-col items-center gap-2">

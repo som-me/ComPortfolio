@@ -82,8 +82,7 @@ export const contactContent = {
         email: "som.meher.2024@gmail.com",
     },
     footer: {
-        firstName: "Cube ",
-        secondName: "Studio",
+        Name: "CubeStudio",
         links: ["Work", "About", "Contacts"],
         follow: "FOLLOW:",
         developedBy: "Developed by Som Meher",
